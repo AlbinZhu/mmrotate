@@ -2,7 +2,7 @@
 Author: bin.zhu
 Date: 2022-06-24 15:25:26
 LastEditors: bin.zhu
-LastEditTime: 2022-06-24 17:06:03
+LastEditTime: 2022-06-24 17:57:39
 Description: file content
 '''
 _base_ = [
@@ -13,7 +13,8 @@ classes = ('left', 'right')
 model = dict(
     bbox_head=dict(
         reg_decoded_bbox=True,
-        loss_bbox=dict(type='GDLoss', loss_type='gwd', loss_weight=5.0)))
+        loss_bbox=dict(type='GDLoss', loss_type='gwd', loss_weight=5.0),
+        num_classes=2))
 
 data_root = '/albin/page_label/'
 data = dict(
@@ -38,9 +39,4 @@ data = dict(
         ann_file=data_root + 'val/',
         img_prefix=data_root + 'val/'))
 
-# 2. model settings
-model = dict(
-    bbox_head=dict(
-        type='RotatedRetinaHead',
-        # explicitly over-write all the `num_classes` field from default 15 to 5.
-        num_classes=2))
+runner = dict(type='EpochBasedRunner', max_epochs=50)
