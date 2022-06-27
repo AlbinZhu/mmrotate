@@ -2,7 +2,7 @@
 Author: bin.zhu
 Date: 2022-06-27 11:25:46
 LastEditors: bin.zhu
-LastEditTime: 2022-06-27 11:25:47
+LastEditTime: 2022-06-27 11:39:55
 Description: file content
 '''
 _base_ = ['../rotated_retinanet/rotated_retinanet_hbb_r50_fpn_1x_dota_oc.py']
@@ -40,7 +40,8 @@ data = dict(
         # explicitly add your class names to the field `classes`
         classes=classes,
         ann_file=data_root + 'train/',
-        img_prefix=data_root + 'train'),
+        img_prefix=data_root + 'train',
+        pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         # explicitly add your class names to the field `classes`
@@ -55,4 +56,3 @@ data = dict(
         img_prefix=data_root + 'val/'))
 
 runner = dict(type='EpochBasedRunner', max_epochs=50)
-data = dict(train=dict(pipeline=train_pipeline))
