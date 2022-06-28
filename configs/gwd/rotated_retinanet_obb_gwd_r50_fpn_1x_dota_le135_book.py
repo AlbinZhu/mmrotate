@@ -2,7 +2,7 @@
 Author: bin.zhu
 Date: 2022-06-24 15:25:26
 LastEditors: bin.zhu
-LastEditTime: 2022-06-24 17:57:39
+LastEditTime: 2022-06-28 09:43:31
 Description: file content
 '''
 _base_ = [
@@ -13,7 +13,7 @@ classes = ('left', 'right')
 model = dict(
     bbox_head=dict(
         reg_decoded_bbox=True,
-        loss_bbox=dict(type='GDLoss', loss_type='gwd', loss_weight=5.0),
+        loss_bbox=dict(type='GDLoss', loss_type='gwd', loss_weight=20.0),
         num_classes=2))
 
 data_root = '/albin/page_label/'
